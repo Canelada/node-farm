@@ -1,6 +1,9 @@
 const fs = require('fs');
 const http = require('http');
+const path = require('path');
 const url = require('url');
+
+//////////////////////////////////////////////////
 
 // FILES
 
@@ -29,10 +32,17 @@ const url = require('url');
 // });
 // console.log('Will read file!');
 
+//////////////////////////////////////////////
+
 //SERVER
 
 const server = http.createServer((req, res) => {
-  res.end('Hello from the server!')
+  const pathName = req.url;
+  if(pathName === '/' || pathName === '/overview'){
+    res.end('This is the OVERVIEW');
+  }else if (pathName === '/product') {
+    res.end('This is the PRODUCT');
+  }else if{}
 });
 
 server.listen(8000, '127.0.0.1',()=>{
